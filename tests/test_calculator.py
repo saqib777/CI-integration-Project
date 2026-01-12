@@ -10,5 +10,5 @@ from src.calculator import add
         (10, 5, 15),
     ]
 )
-def test_add_parametrized(a, b, expected):
+def test_add_returns_expected_result_for_various_inputs(a, b, expected):
     assert add(a, b) == expected
