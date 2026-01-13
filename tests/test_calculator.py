@@ -1,4 +1,5 @@
 import pytest
+
 from src.calculator import add
 
 @pytest.mark.parametrize(
@@ -12,3 +13,9 @@ from src.calculator import add
 )
 def test_add_returns_expected_result_for_various_inputs(a, b, expected):
     assert add(a, b) == expected
+    
+
+def test_add_raises_type_error_for_non_numeric_inputs():
+    with pytest.raises(TypeError):
+        add("a", 1)
+
