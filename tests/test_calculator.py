@@ -1,22 +1,18 @@
+import math
 import pytest
-
 from src.calculator import add
 
 @pytest.mark.parametrize(
     "a, b, expected",
     [
-        (2, 3, 5),
-        (0, 0, 0),
-        (-1, 1, 0),
-        (10, 5, 15),
+        (0, 0, 0),                    # zero boundary
+        (-1, 1, 0),                   # negative ↔ positive boundary
+        (1_000_000, 1_000_000, 2_000_000),  # large number boundary
+        (0.1, 0.2, 0.3),               # floating-point boundary
     ]
 )
-def test_add_returns_expected_result_for_various_inputs(a, b, expected):
-    assert add(a, b) == expected
-    
-
-def add(a, b):
-    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
-        raise TypeError("Inputs must be numbers")
-    return a + b
-
+def test_add_handles_boundary_values(a, b, expected):
+    if isinstance(expected, float):
+        assert math.isclose(add(a, b), expected)
+    else:
+        assert add(a, b) == expected
