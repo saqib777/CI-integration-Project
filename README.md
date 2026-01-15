@@ -88,4 +88,5 @@ This repository prioritizes **learning clarity over speed**.
 ## Author
 
 Mohammed Saqib
+
 Focused on learning Software Testing, Test Automation, and CI/CD through structured hands-on practice.
